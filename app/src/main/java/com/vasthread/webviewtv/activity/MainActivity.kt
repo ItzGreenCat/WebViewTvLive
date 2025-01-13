@@ -118,9 +118,6 @@ class MainActivity : AppCompatActivity() {
             uiMode = UiMode.STANDARD
         }
         channelSettingsView.onGetVideoSize = { playerView.getVideoSize() }
-        exitConfirmView.onUserSelection = {
-            if (it == ExitConfirmView.Selection.EXIT) finish() else uiMode = UiMode.APP_SETTINGS
-        }
         playerView.dismissAllViewCallback = { uiMode = UiMode.STANDARD }
         playerView.clickCallback = { x, _ ->
             val channelSettingsWidth = channelSettingsView.layoutParams.width + uiLayout.paddingRight
@@ -180,7 +177,7 @@ class MainActivity : AppCompatActivity() {
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        uiMode = if (uiMode == UiMode.STANDARD) UiMode.EXIT_CONFIRM else UiMode.STANDARD
+        uiMode = if (uiMode == UiMode.STANDARD) UiMode.STANDARD else UiMode.STANDARD
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -221,7 +218,6 @@ class MainActivity : AppCompatActivity() {
         }
         when (uiMode) {
             UiMode.CHANNELS -> if (playlistView.dispatchKeyEvent(event)) return true
-            UiMode.EXIT_CONFIRM -> if (exitConfirmView.dispatchKeyEvent(event)) return true
             UiMode.CHANNEL_SETTINGS -> if (channelSettingsView.dispatchKeyEvent(event)) return true
             UiMode.APP_SETTINGS -> if (appSettingsView.dispatchKeyEvent(event)) return true
             else -> {
