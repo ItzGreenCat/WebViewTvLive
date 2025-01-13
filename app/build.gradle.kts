@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.vasthread.webviewtv"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.vasthread.webviewtv"
