@@ -25,6 +25,6 @@ jobs:
           arguments: assembleRelease
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "*.apk"
+          artifacts: "app/release/*.apk"
           token: ${{ github.token }}
           generateReleaseNotes: true
